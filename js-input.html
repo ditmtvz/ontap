@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <input type="text" id="ten">
+    <div id="content">A</div>
+    <button onclick="xuLy()"> ans</button>
+    <script>
+
+        function xuLy(){
+             ip = document.getElementById("ten");
+            div = document.getElementById("content");
+
+            div.innerText = "Xinh chao: "+ ip.value;
+        }
+
+    </script>
+</body>
+</html>
