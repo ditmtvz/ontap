@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Form Example</title>
+</head>
+<body>
+  <form id="myForm">
+    <h2>Interests</h2>
+    <label>
+      <input type="checkbox" name="interests[]" value="reading">Reading
+    </label>
+    <label>
+      <input type="checkbox" name="interests[]" value="writing">Writing
+    </label>
+    <label>
+      <input type="checkbox" name="interests[]" value="coding">Coding
+    </label>
+
+    <h2>Gender</h2>
+    <label>
+      <input type="radio" name="gender" value="male">Male
+    </label>
+    <label>
+      <input type="radio" name="gender" value="female">Female
+    </label>
+    <label>
+      <input type="radio" name="gender" value="other">Other
+    </label>
+
+    <h2>Personal Information</h2>
+    <label>
+      Name:
+      <input type="text" name="name" required>
+    </label>
+
+    <label>
+      Favorite Color:
+      <select name="color">
+        <option value="">Select a color</option>
+        <option value="red">Red</option>
+        <option value="green">Green</option>
+        <option value="blue">Blue</option>
+      </select>
+    </label>
+
+    <label>
+      Message:
+      <textarea name="message"></textarea>
+    </label>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    const form = document.getElementById('myForm');
+    const checkboxes = form.querySelectorAll('input[type=checkbox]');
+    const radioButtons = form.querySelectorAll('input[type=radio]');
+    const nameInput = form.querySelector('input[name=name]');
+    const colorSelect = form.querySelector('select[name=color]');
+    const messageTextarea = form.querySelector('textarea[name=message]');
+
+    // Xử lý khi gửi form
+    form.addEventListener('submit', function(event) {
+      event.preventDefault(); // Ngăn chặn gửi form
+
+      // Lấy giá trị của các checkbox đã chọn
+      const selectedInterests = Array.from(checkboxes)
+        .filter(checkbox => checkbox.checked)
+        .map(checkbox => checkbox.value);
+    //   console.log('Sở thích đã chọn:', selectedInterests);
+        for(let i=0; i<selectedInterests.length;i++){
+            console.log(selectedInterests[i]);
+        }
+      // Lấy giá trị của radio button đã chọn
+      const selectedGender = Array.from(radioButtons)
+        .find(radio => radio.checked)
+        .value;
+      console.log('Giới tính đã chọn:', selectedGender);
+
+      // Lấy giá trị của input text
+      const nameValue = nameInput.value.trim();
+      console.log('Giá trị đã nhập:', nameValue);
+
+      // Lấy giá trị đã chọn từ select
+      const selectedColor = colorSelect.value;
+      console.log('Màu đã chọn:', selectedColor);
+
+      // Lấy giá trị của textarea
+      const messageValue = messageTextarea.value.trim();
+      console.log('Tin nhắn đã nhập:', messageValue);
+    });
+
+    // Xử lý khi nhập giá trị vào input text
+    nameInput.addEventListener('input', function() {
+      const nameValue = this.value.trim();
+      console.log('Giá trị đã nhập:', nameValue);
+    });
+
+    // Xử lý khi nhập giá trị vào textarea
+    messageTextarea.addEventListener('input', function() {
+      const messageValue = this.value.trim();
+      console.log('Tin nhắn đã nhập:', messageValue);
+    });
+  </script>
+</body>
+</html>
