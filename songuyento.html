@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Số nguyên tố trong khoảng</title>
+</head>
+<body>
+  <h1>Số nguyên tố trong khoảng</h1>
+  <label for="start">Số đầu:</label>
+  <input type="number" id="start">
+  <br>
+  <label for="end">Số cuối:</label>
+  <input type="number" id="end">
+  <br>
+  <button onclick="findPrimes()">Tìm số nguyên tố</button>
+  <p id="result"></p>
+
+  <script>
+    function isPrime(num) {
+      if (num < 2) return false;
+      for (let i = 2; i <= Math.sqrt(num); i++) {
+        if (num % i === 0) {
+          return false;
+        }
+      }
+      return true;
+    }
+
+    function findPrimes() {
+      const startNum = parseInt(document.getElementById("start").value);
+      const endNum = parseInt(document.getElementById("end").value);
+      const resultElement = document.getElementById("result");
+      let primes = "";
+
+      if (isNaN(startNum) || isNaN(endNum)) {
+        resultElement.textContent = "Vui lòng nhập số nguyên hợp lệ!";
+        return;
+      }
+
+      for (let i = startNum; i <= endNum; i++) {
+        if (isPrime(i)) {
+          primes += i + " ";
+        }
+      }
+
+      if (primes === "") {
+        resultElement.textContent = "Không có số nguyên tố trong khoảng đã cho.";
+      } else {
+        resultElement.textContent = "Các số nguyên tố trong khoảng đã cho là: " + primes;
+      }
+    }
+  </script>
+</body>
+</html>

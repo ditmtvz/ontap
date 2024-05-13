@@ -4,14 +4,35 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>table</title>
-    <style>
-      table tr:nth-child(odd) {
-        background-color: aqua;
-      }
-    </style>
+<style>
+  * {
+    box-sizing: border-box;
+  }
+  table {
+    border-collapse: collapse;
+    border: none;
+  }
+  th, td {
+    padding: 60px;
+    border: none;
+  }
+  table tr:nth-child(odd) {
+    background-color: aqua;
+  }
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  tr{
+    padding-bottom: 20px;
+  }
+</style>
   </head>
   <body>
     <table border="1">
+      <caption>Tatble ex</caption>
       <tr>
         <td colspan="2" rowspan="3">A</td>
         <td colspan="2" rowspan="1">B</td>
